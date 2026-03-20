@@ -1,4 +1,7 @@
 {
     "editor.defaultFormatter": "JakeBecker.elixir-ls",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "emmet.includeLanguages": {
+        "phoenix-heex": "html"
+    }
 }
