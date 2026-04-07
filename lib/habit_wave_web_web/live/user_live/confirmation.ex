@@ -1,5 +1,5 @@
-defmodule HabitWaveWeb.UserLive.Confirmation do
-  use HabitWaveWeb, :live_view
+defmodule HabitWaveWebWeb.UserLive.Confirmation do
+  use HabitWaveWebWeb, :live_view
 
   alias HabitWaveWeb.Accounts
 

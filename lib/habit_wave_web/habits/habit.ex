@@ -33,9 +33,31 @@ defmodule HabitWaveWeb.Habits.Habit do
     timestamps(type: :utc_datetime)
   end
 
+  @spec changeset(
+          {map(),
+           %{
+             optional(atom()) =>
+               atom()
+               | {:array | :assoc | :embed | :in | :map | :parameterized | :supertype | :try,
+                  any()}
+           }}
+          | %{
+              :__struct__ => atom() | %{:__changeset__ => any(), optional(any()) => any()},
+              optional(atom()) => any()
+            },
+          :invalid | %{optional(:__struct__) => none(), optional(atom() | binary()) => any()}
+        ) :: Ecto.Changeset.t()
   def changeset(habit, attrs) do
     habit
-    |> cast(attrs, [:title, :type, :is_active, :frequency_type, :interval_days, :start_date, :user_id])
+    |> cast(attrs, [
+      :title,
+      :type,
+      :is_active,
+      :frequency_type,
+      :interval_days,
+      :start_date,
+      :user_id
+    ])
     |> validate_required([:title, :interval_days, :start_date, :user_id])
     |> validate_number(:interval_days, greater_than: 0)
     |> validate_inclusion(:type, [0, 1])

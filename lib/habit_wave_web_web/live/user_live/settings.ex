@@ -1,5 +1,5 @@
-defmodule HabitWaveWeb.UserLive.Settings do
-  use HabitWaveWeb, :live_view
+defmodule HabitWaveWebWeb.UserLive.Settings do
+  use HabitWaveWebWeb, :live_view
 
   on_mount {HabitWaveWeb.UserAuth, :require_sudo_mode}
 

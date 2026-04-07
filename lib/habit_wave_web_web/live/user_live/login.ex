@@ -1,5 +1,5 @@
-defmodule HabitWaveWeb.UserLive.Login do
-  use HabitWaveWeb, :live_view
+defmodule HabitWaveWebWeb.UserLive.Login do
+  use HabitWaveWebWeb, :live_view
 
   alias HabitWaveWeb.Accounts
 

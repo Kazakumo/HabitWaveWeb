@@ -46,6 +46,11 @@ defmodule HabitWaveWeb.Habits do
   @spec delete_habit(Habit.t()) :: {:ok, Habit.t()} | {:error, Ecto.Changeset.t()}
   def delete_habit(%Habit{} = habit), do: Repo.delete(habit)
 
+  @spec change_habit(Habit.t(), map()) :: Ecto.Changeset.t()
+  def change_habit(%Habit{} = habit, attrs \\ %{}) do
+    Habit.changeset(habit, attrs)
+  end
+
   ## Habit Log Operations
 
   @spec log_habit(Habit.t(), float(), Date.t()) ::

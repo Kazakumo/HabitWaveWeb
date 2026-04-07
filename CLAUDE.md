@@ -17,10 +17,17 @@ n日に1回の習慣に対応し、イエスタデイ・チェックイン（寛
     - ストリーク維持条件: 「直近の予定日」または「その1つ前の予定日」に記録があること。
     - 記録（HabitRecord）は、実際の記録日ではなく「対象とする予定日（target_date）」を保持する。
 
+## Module Namespace ルール
+プロジェクト名が `habit_wave_web` のため、Phoenixの命名規則により以下の2つのモジュール空間が存在する：
+- `HabitWaveWeb` — ビジネスロジック層（Context、Schema、純粋関数）
+- `HabitWaveWebWeb` — Web層（LiveView、Controller、Component、Router）
+
+Web層のファイル（`lib/habit_wave_web_web/` 以下）では必ず `use HabitWaveWebWeb, :live_view` / `:live_component` / `:controller` を使うこと。`use HabitWaveWeb` は誤り。
+
 ## Implementation Patterns
-- Business Logic: `lib/habit_wave/habits/logic.ex` に純粋関数として記述。
-- Contexts: `lib/habit_wave/habits.ex` (Habit, HabitRecordのCRUD)
-- LiveView: `lib/habit_wave_web/live/`
+- Business Logic: `lib/habit_wave_web/habits/logic.ex` に純粋関数として記述。
+- Contexts: `lib/habit_wave_web/habits.ex` (Habit, HabitLogのCRUD)
+- LiveView: `lib/habit_wave_web_web/live/`
 
 ## Style Guide
 - 型定義: `@type` を積極的に使用し、型安全性を高める。

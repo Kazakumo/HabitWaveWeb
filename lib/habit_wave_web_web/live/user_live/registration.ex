@@ -1,5 +1,5 @@
-defmodule HabitWaveWeb.UserLive.Registration do
-  use HabitWaveWeb, :live_view
+defmodule HabitWaveWebWeb.UserLive.Registration do
+  use HabitWaveWebWeb, :live_view
 
   alias HabitWaveWeb.Accounts
   alias HabitWaveWeb.Accounts.User

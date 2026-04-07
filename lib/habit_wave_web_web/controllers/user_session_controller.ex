@@ -1,5 +1,5 @@
-defmodule HabitWaveWeb.UserSessionController do
-  use HabitWaveWeb, :controller
+defmodule HabitWaveWebWeb.UserSessionController do
+  use HabitWaveWebWeb, :controller
 
   alias HabitWaveWeb.Accounts
   alias HabitWaveWeb.UserAuth

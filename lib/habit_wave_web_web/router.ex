@@ -1,7 +1,7 @@
 defmodule HabitWaveWebWeb.Router do
   use HabitWaveWebWeb, :router
 
-  import HabitWaveWeb.UserAuth
+  import HabitWaveWebWeb.UserAuth
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -47,23 +47,26 @@ defmodule HabitWaveWebWeb.Router do
 
   ## Authentication routes
 
-  scope "/", HabitWaveWeb do
+  scope "/", HabitWaveWebWeb do
     pipe_through [:browser, :require_authenticated_user]
 
     live_session :require_authenticated_user,
-      on_mount: [{HabitWaveWeb.UserAuth, :require_authenticated}] do
+      on_mount: [{HabitWaveWebWeb.UserAuth, :require_authenticated}] do
       live "/users/settings", UserLive.Settings, :edit
       live "/users/settings/confirm-email/:token", UserLive.Settings, :confirm_email
+      live "/habits", HabitLive.Index, :index
+      live "/habits/new", HabitLive.Index, :new
+      live "/habits/:id/edit", HabitLive.Index, :edit
     end
 
     post "/users/update-password", UserSessionController, :update_password
   end
 
-  scope "/", HabitWaveWeb do
+  scope "/", HabitWaveWebWeb do
     pipe_through [:browser]
 
     live_session :current_user,
-      on_mount: [{HabitWaveWeb.UserAuth, :mount_current_scope}] do
+      on_mount: [{HabitWaveWebWeb.UserAuth, :mount_current_scope}] do
       live "/users/register", UserLive.Registration, :new
       live "/users/log-in", UserLive.Login, :new
       live "/users/log-in/:token", UserLive.Confirmation, :new

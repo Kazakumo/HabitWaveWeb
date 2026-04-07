@@ -1,5 +1,5 @@
-defmodule HabitWaveWeb.UserAuth do
-  use HabitWaveWeb, :verified_routes
+defmodule HabitWaveWebWeb.UserAuth do
+  use HabitWaveWebWeb, :verified_routes
 
   import Plug.Conn
   import Phoenix.Controller
@@ -199,7 +199,7 @@ defmodule HabitWaveWeb.UserAuth do
   the `current_scope`:
 
       defmodule HabitWaveWeb.PageLive do
-        use HabitWaveWeb, :live_view
+        use HabitWaveWebWeb, :live_view
 
         on_mount {HabitWaveWeb.UserAuth, :mount_current_scope}
         ...
